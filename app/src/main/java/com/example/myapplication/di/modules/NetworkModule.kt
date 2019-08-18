@@ -11,27 +11,25 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
 import com.example.myapplication.BuildConfig
-import com.example.myapplication.data.network.FactsApi
+import com.example.myapplication.data.network.ApiKeyInterceptor
+import com.example.myapplication.data.network.CatsApi
 import okhttp3.logging.HttpLoggingInterceptor
-import javax.inject.Singleton
-
-
 
 
 @Module
 class NetworkModule {
-    private val BASE_URL = "https://cat-fact.herokuapp.com/"
+    private val BASE_URL = "https://api.thecatapi.com/v1/"
 
     @NonNull
     @Provides
     @PerApplication
-    fun provideRetrofit(@NonNull okHttpClient: OkHttpClient, @NonNull gson: Gson): FactsApi {
+    fun provideRetrofit(@NonNull okHttpClient: OkHttpClient, @NonNull gson: Gson): CatsApi {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
-            .build().create<FactsApi>(FactsApi::class.java)
+            .build().create<CatsApi>(CatsApi::class.java)
     }
 
     @NonNull
@@ -44,6 +42,12 @@ class NetworkModule {
 
     @Provides
     @PerApplication
+    fun provideApiKeyInterceptor(): ApiKeyInterceptor {
+        return ApiKeyInterceptor()
+    }
+
+    @Provides
+    @PerApplication
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
     }
@@ -51,8 +55,12 @@ class NetworkModule {
     @NonNull
     @Provides
     @PerApplication
-    fun provideOkHttpClient(@NonNull httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        apiKeyInterceptor: ApiKeyInterceptor,
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(apiKeyInterceptor)
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
