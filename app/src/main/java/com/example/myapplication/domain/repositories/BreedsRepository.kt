@@ -5,5 +5,8 @@ import com.example.myapplication.domain.models.FavouriteCat
 import io.reactivex.Single
 
 interface BreedsRepository {
-    fun loadBreeds(): Single<List<Breed>>
+
+    fun loadBreedsFromNetwork(): Single<List<Breed>>
+
+    fun getBreedsFromDb(): Single<List<Breed>>
 }

@@ -7,7 +7,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context=".presentation.MainBottomNavigationActivity">
+              tools:context=".presentation.views.MainBottomNavigationActivity">
 
     <FrameLayout
             android:id="@+id/flContent"

@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation
+package com.example.myapplication.presentation.views.rendom_cats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.domain.models.Cat
+import com.example.myapplication.presentation.GlideApp
 import com.example.myapplication.presentation.presenters.CatPresenter
-import com.example.myapplication.presentation.views.CatView
 import kotlinx.android.synthetic.main.fragment_cat.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -57,9 +57,7 @@ class RandomCatFragment : MvpAppCompatFragment(), CatView {
         catId = cat.id
         GlideApp.with(this)
             .load(cat.url)
-            .centerInside()
-            .placeholder(R.drawable.ic_placeholder_cat)
-            .fitCenter()
+            .placeholder(R.drawable.placeholder_cat)
             .into(ivKitty)
     }
 

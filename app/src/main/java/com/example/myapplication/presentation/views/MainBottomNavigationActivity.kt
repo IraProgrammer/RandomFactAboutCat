@@ -1,9 +1,12 @@
-package com.example.myapplication.presentation
+package com.example.myapplication.presentation.views
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.presentation.views.breeds.BreedsFragment
+import com.example.myapplication.presentation.views.favourites.FavouritesFragment
+import com.example.myapplication.presentation.views.rendom_cats.RandomCatFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainBottomNavigationActivity : AppCompatActivity() {
@@ -15,10 +18,11 @@ class MainBottomNavigationActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loadFragment(BreedsFragment.newInstance())
+        loadFragment(RandomCatFragment.newInstance())
 
         bnMenu.setOnNavigationItemSelectedListener {
             when (it.itemId) {

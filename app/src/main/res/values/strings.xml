@@ -4,6 +4,7 @@
     <string name="breeds">breeds</string>
     <string name="cat">cat</string>
     <string name="favourites">favourites</string>
-    <string name="fail">Не удалось загрузить. Попробуйте снова.</string>
+
+    <string name="fail">Failed to load. Please try again.</string>
     <string name="success">Success!</string>
 </resources>

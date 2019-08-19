@@ -1,6 +1,5 @@
-package com.example.myapplication.presentation
+package com.example.myapplication.presentation.views.breeds
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.widget.Toast
 import moxy.MvpAppCompatFragment
@@ -13,7 +12,6 @@ import com.example.myapplication.R
 import com.example.myapplication.domain.models.Breed
 import com.example.myapplication.presentation.adapters.BreedsAdapter
 import com.example.myapplication.presentation.presenters.BreedsPresenter
-import com.example.myapplication.presentation.views.BreedsView
 import kotlinx.android.synthetic.main.fragment_breeds.*
 
 
@@ -37,9 +35,10 @@ class BreedsFragment : MvpAppCompatFragment(), BreedsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         rvBreeds.layoutManager = LinearLayoutManager(context)
 
-        srlSwipe.setOnRefreshListener { breedsPresenter.loadBreeds() }
+        srlSwipe.setOnRefreshListener { breedsPresenter.loadBreedsFromNetworkOnly() }
     }
 
     override fun showProgressBar(){

@@ -6,6 +6,10 @@ import io.reactivex.schedulers.Schedulers
 
 class BreedsInteractor(var breedsRepository: BreedsRepository) {
 
-    fun loadBreeds() = breedsRepository.loadBreeds()
+    fun loadBreeds() = breedsRepository.loadBreedsFromNetwork()
+        .onErrorResumeNext { breedsRepository.getBreedsFromDb() }
+        .subscribeOn(Schedulers.io())
+
+    fun loadBreedsFromNetworkOnly() = breedsRepository.loadBreedsFromNetwork()
         .subscribeOn(Schedulers.io())
 }

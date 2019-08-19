@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.RandomCatFragment">
+        tools:context=".presentation.views.rendom_cats.RandomCatFragment">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -19,6 +19,7 @@
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:src="@drawable/placeholder_cat"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/ivKitty"/>

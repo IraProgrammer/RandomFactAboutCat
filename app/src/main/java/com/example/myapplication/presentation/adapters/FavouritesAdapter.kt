@@ -35,6 +35,7 @@ class FavouritesAdapter() : RecyclerView.Adapter<FavouritesAdapter.FavouritesVie
             itemView.let {
                 GlideApp.with(it.context)
                     .load(cat.image.url)
+                    .placeholder(R.drawable.placeholder_cat)
                     .into(it.ivFavouriteCat)
             }
         }

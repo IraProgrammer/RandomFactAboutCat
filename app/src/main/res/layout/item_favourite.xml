@@ -2,13 +2,13 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".presentation.FavouritesFragment"
+        tools:context=".presentation.views.favourites.FavouritesFragment"
         android:layout_width="match_parent"
         android:layout_margin="4dp"
         android:layout_height="120dp">
 
     <ImageView
-            tools:context=".presentation.FavouritesFragment"
+            tools:context=".presentation.views.favourites.FavouritesFragment"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
             android:layout_gravity="center"

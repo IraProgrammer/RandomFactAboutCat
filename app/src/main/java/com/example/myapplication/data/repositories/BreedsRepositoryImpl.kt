@@ -10,18 +10,20 @@ import io.reactivex.Single
 
 class BreedsRepositoryImpl(private val catsApi: CatsApi, private val breedsDao: BreedsDao) :
     BreedsRepository {
-    override fun loadBreeds(): Single<List<Breed>> {
+
+    override fun getBreedsFromDb(): Single<List<Breed>> {
+        return getFromDb()
+            .flattenAsObservable { list -> list }
+            .map { it.toModel() }
+            .toList()
+    }
+
+    override fun loadBreedsFromNetwork(): Single<List<Breed>> {
         return catsApi.getBreeds()
             .flattenAsObservable { list -> list }
             .map { it.toModel() }
             .doOnNext { breed -> saveBreedToDb(breed) }
             .toList()
-            .onErrorResumeNext {
-                getFromDb()
-                    .flattenAsObservable { list -> list }
-                    .map { it.toModel() }
-                    .toList()
-            }
     }
 
     fun saveBreedToDb(breed: Breed) {

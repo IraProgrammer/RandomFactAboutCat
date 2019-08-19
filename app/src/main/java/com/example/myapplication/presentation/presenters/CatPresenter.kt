@@ -4,7 +4,7 @@ import com.example.myapplication.CatsApp
 import com.example.myapplication.di.modules.CatModule
 import com.example.myapplication.di.modules.MainModule
 import com.example.myapplication.domain.interactors.CatInteractor
-import com.example.myapplication.presentation.views.CatView
+import com.example.myapplication.presentation.views.rendom_cats.CatView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.InjectViewState
 import javax.inject.Inject
@@ -31,9 +31,11 @@ class CatPresenter : BasePresenter<CatView>() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     viewState.uncheckedLike()
-                    viewState.enabledLike()
                 }
-                .subscribe({ fact -> viewState.onSuccessGetCat(fact) }, { viewState.onError() })
+                .subscribe({ fact ->
+                    viewState.enabledLike()
+                    viewState.onSuccessGetCat(fact)
+                }, { viewState.onError() })
         )
     }
 

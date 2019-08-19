@@ -1,6 +1,7 @@
-package com.example.myapplication.presentation.views
+package com.example.myapplication.presentation.views.rendom_cats
 
 import com.example.myapplication.domain.models.Cat
+import com.example.myapplication.presentation.views.BaseView
 
 interface CatView: BaseView {
     fun onSuccessGetCat(cat: Cat)
