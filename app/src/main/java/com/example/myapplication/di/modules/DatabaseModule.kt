@@ -6,7 +6,7 @@ import dagger.Provides
 import androidx.room.Room
 import com.example.myapplication.data.database.AppDatabase
 import com.example.myapplication.data.database.AppDatabase.Companion.DATABASE_NAME
-import com.example.myapplication.data.database.dao.FactDao
+import com.example.myapplication.data.database.dao.BreedsDao
 import dagger.Module
 import javax.inject.Named
 
@@ -24,7 +24,7 @@ class DatabaseModule {
 
     @Provides
     @PerApplication
-    fun provideFactDao(database: AppDatabase): FactDao {
-        return database.factDao()
+    fun provideFactDao(database: AppDatabase): BreedsDao {
+        return database.breedsDao()
     }
 }

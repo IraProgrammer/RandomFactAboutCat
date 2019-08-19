@@ -15,5 +15,5 @@ data class BreedDb(
 
     var origin: String,
 
-    var wikipediaUrl: String
+    var wikipediaUrl: String?
 )

@@ -25,10 +25,17 @@ class BreedsPresenter : BasePresenter<BreedsView>() {
         CatsApp.appComponent?.addMainComponent(MainModule())?.addBreedsComponent(BreedsModule())?.inject(this)
     }
 
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        loadBreeds()
+    }
+
     fun loadBreeds() {
+        viewState.showProgressBar()
         add(
             breedsInteractor.loadBreeds()
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { viewState.hideProgressBar() }
                 .subscribe({ viewState.onSuccessGetBreeds(it) }, { viewState.onError() })
         )
     }

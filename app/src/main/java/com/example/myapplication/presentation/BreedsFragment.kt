@@ -1,13 +1,8 @@
 package com.example.myapplication.presentation
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.myapplication.domain.models.FavouriteCat
-import com.example.myapplication.presentation.adapters.FavouritesAdapter
-import com.example.myapplication.presentation.presenters.FavoritesPresenter
-import com.example.myapplication.presentation.views.FavouritesView
-import kotlinx.android.synthetic.main.fragment_favourites.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import android.view.ViewGroup
@@ -22,7 +17,7 @@ import com.example.myapplication.presentation.views.BreedsView
 import kotlinx.android.synthetic.main.fragment_breeds.*
 
 
-class HomeFragment : MvpAppCompatFragment(), BreedsView {
+class BreedsFragment : MvpAppCompatFragment(), BreedsView {
 
     @InjectPresenter
     internal lateinit var breedsPresenter: BreedsPresenter
@@ -30,8 +25,8 @@ class HomeFragment : MvpAppCompatFragment(), BreedsView {
     private lateinit var breedsAdapter: BreedsAdapter
 
     companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
+        fun newInstance(): BreedsFragment {
+            return BreedsFragment()
         }
     }
 
@@ -43,7 +38,16 @@ class HomeFragment : MvpAppCompatFragment(), BreedsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvBreeds.layoutManager = LinearLayoutManager(context)
-        breedsPresenter.loadBreeds()
+
+        srlSwipe.setOnRefreshListener { breedsPresenter.loadBreeds() }
+    }
+
+    override fun showProgressBar(){
+        srlSwipe.isRefreshing = true
+    }
+
+    override fun hideProgressBar(){
+        srlSwipe.isRefreshing = false
     }
 
     override fun onSuccessGetBreeds(breed: List<Breed>) {
@@ -53,6 +57,6 @@ class HomeFragment : MvpAppCompatFragment(), BreedsView {
     }
 
     override fun onError() {
-        Toast.makeText(context, "Проверьте интернет-соединение и попробуйте еще раз", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, getString(R.string.fail), Toast.LENGTH_LONG).show()
     }
 }

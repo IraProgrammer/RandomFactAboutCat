@@ -6,7 +6,6 @@ import io.reactivex.Single
 
 interface CatsRepository {
     fun loadRandomCat(): Single<Cat>
-    //fun saveFactToDb(cat: Cat)
 
     fun addToFavourite(imageId: String): Single<Response>
 }

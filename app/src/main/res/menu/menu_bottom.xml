@@ -3,9 +3,9 @@
       android:layout_height="wrap_content" android:layout_width="match_parent">
 
     <item
-            android:id="@+id/navigation_home"
-            android:icon="@drawable/ic_home"
-            android:title="@string/home"/>
+            android:id="@+id/navigation_breeds"
+            android:icon="@drawable/ic_breeds"
+            android:title="@string/breeds"/>
 
     <item
             android:id="@+id/navigation_dashboard"

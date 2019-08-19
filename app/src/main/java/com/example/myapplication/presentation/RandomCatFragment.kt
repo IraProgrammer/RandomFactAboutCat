@@ -33,22 +33,41 @@ class RandomCatFragment : MvpAppCompatFragment(), CatView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnNext.setOnClickListener { catPresenter.loadFact() }
-        btnAddToFavourites.setOnClickListener { catPresenter.addToFavourites(catId) }
+        ibNext.setOnClickListener {
+            catPresenter.loadCat()
+        }
+        chbAddToFavourites.setOnCheckedChangeListener { _, b ->
+            if (b) catPresenter.addToFavourites(catId)
+        }
     }
 
-    override fun onSuccessGetFact(cat: Cat) {
+    override fun enabledLike() {
+        chbAddToFavourites.isEnabled = true
+    }
+
+    override fun disabledLike() {
+        chbAddToFavourites.isEnabled = false
+    }
+
+    override fun uncheckedLike() {
+        chbAddToFavourites.isChecked = false
+    }
+
+    override fun onSuccessGetCat(cat: Cat) {
         catId = cat.id
         GlideApp.with(this)
             .load(cat.url)
+            .centerInside()
+            .placeholder(R.drawable.ic_placeholder_cat)
+            .fitCenter()
             .into(ivKitty)
     }
 
     override fun onSuccessAddToFavourites() {
-        Toast.makeText(context, "Добавлено!", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, getString(R.string.success), Toast.LENGTH_LONG).show()
     }
 
     override fun onError() {
-        Toast.makeText(context, "Проверьте интернет-соединение и попробуйте еще раз", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, R.string.fail, Toast.LENGTH_LONG).show()
     }
 }

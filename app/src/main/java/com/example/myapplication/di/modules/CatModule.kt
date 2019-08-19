@@ -1,7 +1,7 @@
 package com.example.myapplication.di.modules
 
 import dagger.Provides
-import com.example.myapplication.data.database.dao.FactDao
+import com.example.myapplication.data.database.dao.BreedsDao
 import com.example.myapplication.data.network.CatsApi
 import com.example.myapplication.data.repositories.CatsRepositoryImpl
 import com.example.myapplication.di.scopes.PerFragment
@@ -19,7 +19,7 @@ class CatModule {
 
     @Provides
     @PerFragment
-    internal fun provideCatRepository(catsApi: CatsApi, factDao: FactDao): CatsRepository {
-        return CatsRepositoryImpl(catsApi, factDao)
+    internal fun provideCatRepository(catsApi: CatsApi): CatsRepository {
+        return CatsRepositoryImpl(catsApi)
     }
 }

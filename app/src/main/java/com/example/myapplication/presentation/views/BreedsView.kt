@@ -5,4 +5,6 @@ import com.example.myapplication.domain.models.Breed
 interface BreedsView: BaseView {
     fun onSuccessGetBreeds(breed: List<Breed>)
     fun onError()
+    fun showProgressBar()
+    fun hideProgressBar()
 }

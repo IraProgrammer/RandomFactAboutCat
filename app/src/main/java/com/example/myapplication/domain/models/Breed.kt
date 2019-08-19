@@ -8,7 +8,7 @@ data class Breed(
     
     var name: String,
     
-    var origin: String
+    var origin: String,
     
-    //var wikipediaUrl: String
+    var wikipediaUrl: String?
 )

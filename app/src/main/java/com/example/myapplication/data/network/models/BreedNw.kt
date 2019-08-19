@@ -19,9 +19,9 @@ data class BreedNw(
 
     @SerializedName("origin")
     @Expose
-    var origin: String
+    var origin: String,
 
-//    @SerializedName("wikipedia_url")
-//    @Expose
-//    var wikipediaUrl: String?
+    @SerializedName("wikipedia_url")
+    @Expose
+    var wikipediaUrl: String?
 )

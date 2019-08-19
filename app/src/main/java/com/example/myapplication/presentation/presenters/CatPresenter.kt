@@ -19,15 +19,26 @@ class CatPresenter : BasePresenter<CatView>() {
         CatsApp.appComponent?.addMainComponent(MainModule())?.addCatComponent(CatModule())?.inject(this)
     }
 
-    fun loadFact() {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        loadCat()
+    }
+
+    fun loadCat() {
+        viewState.disabledLike()
         add(
             catInteractor.loadCat()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ fact -> viewState.onSuccessGetFact(fact) }, { viewState.onError() })
+                .doOnSubscribe {
+                    viewState.uncheckedLike()
+                    viewState.enabledLike()
+                }
+                .subscribe({ fact -> viewState.onSuccessGetCat(fact) }, { viewState.onError() })
         )
     }
 
     fun addToFavourites(imageId: String) {
+        viewState.disabledLike()
         add(
             catInteractor.addToFavourites(imageId)
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,7 +1,6 @@
 package com.example.myapplication.di.modules
 
 import dagger.Provides
-import com.example.myapplication.data.database.dao.FactDao
 import com.example.myapplication.data.network.CatsApi
 import com.example.myapplication.data.repositories.FavouritesRepositoryImpl
 import com.example.myapplication.di.scopes.PerFragment
@@ -19,7 +18,7 @@ class FavouritesModule {
 
     @Provides
     @PerFragment
-    internal fun provideFavouritesRepository(catsApi: CatsApi, factDao: FactDao): FavouritesRepository {
-        return FavouritesRepositoryImpl(catsApi, factDao)
+    internal fun provideFavouritesRepository(catsApi: CatsApi): FavouritesRepository {
+        return FavouritesRepositoryImpl(catsApi)
     }
 }

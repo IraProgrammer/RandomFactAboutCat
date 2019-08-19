@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".presentation.HomeFragment"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".presentation.BreedsFragment"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="4dp"
         android:orientation="vertical"
+        app:cardCornerRadius="6dp"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/tvBreed"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content">
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/tvDescription"/>
-</LinearLayout>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:id="@+id/tvBreed"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/tvDescription"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:autoLink="web"
+                  android:textColorLink="@color/blue"
+                  android:linksClickable="true"
+                  android:id="@+id/tvWikiUrl"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
