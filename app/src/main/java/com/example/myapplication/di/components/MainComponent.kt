@@ -15,7 +15,7 @@ import dagger.Subcomponent
     modules = [MainModule::class]
 )
 interface MainComponent{
-    fun addFactsComponent(favouritesModule: FavouritesModule): FavouritesComponent
+    fun addFavouritesComponent(favouritesModule: FavouritesModule): FavouritesComponent
     fun addCatComponent(catModule: CatModule): CatComponent
     fun addBreedsComponent(breedsModule: BreedsModule): BreedsComponent
 }

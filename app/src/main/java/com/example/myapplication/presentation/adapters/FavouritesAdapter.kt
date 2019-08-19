@@ -11,10 +11,10 @@ import kotlinx.android.synthetic.main.item_favourite.view.*
 
 class FavouritesAdapter() : RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder>() {
 
-    private var words: List<FavouriteCat> = ArrayList()
+    private var favourites: List<FavouriteCat> = ArrayList()
 
     fun setFavourites(words: List<FavouriteCat>) {
-        this.words = words
+        this.favourites = words
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): FavouritesViewHolder {
@@ -23,18 +23,18 @@ class FavouritesAdapter() : RecyclerView.Adapter<FavouritesAdapter.FavouritesVie
     }
 
     override fun getItemCount(): Int {
-        return words.size
+        return favourites.size
     }
 
     override fun onBindViewHolder(viewHolder: FavouritesViewHolder, i: Int) {
-        viewHolder.bind(words[i])
+        viewHolder.bind(favourites[i])
     }
 
     inner class FavouritesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(cat: FavouriteCat) {
             itemView.let {
                 GlideApp.with(it.context)
-                    .load(cat.image.url)
+                    .load(cat.imageUrl)
                     .placeholder(R.drawable.placeholder_cat)
                     .into(it.ivFavouriteCat)
             }

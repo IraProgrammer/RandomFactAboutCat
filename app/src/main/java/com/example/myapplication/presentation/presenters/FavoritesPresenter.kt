@@ -16,7 +16,7 @@ class FavoritesPresenter : BasePresenter<FavouritesView>() {
     lateinit var favouritesInteractor: FavouritesInteractor
 
     init {
-        CatsApp.appComponent?.addMainComponent(MainModule())?.addFactsComponent(FavouritesModule())?.inject(this)
+        CatsApp.appComponent?.addMainComponent(MainModule())?.addFavouritesComponent(FavouritesModule())?.inject(this)
     }
 
     override fun onFirstViewAttach() {

@@ -12,7 +12,7 @@ interface CatsApi{
     fun getRandomCat(): Single<List<CatNw>>
 
     @POST("favourites")
-    fun addCatToFavourites(@Body addCat: AddCat): Single<Response>
+    fun addCatToFavourites(@Body addCat: AddCat): Single<Any>
 
     @GET("favourites")
     fun getFavourites(): Single<List<FavouriteCatNw>>

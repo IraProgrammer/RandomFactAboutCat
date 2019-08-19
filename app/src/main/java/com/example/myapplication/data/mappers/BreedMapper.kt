@@ -5,24 +5,24 @@ import com.example.myapplication.data.network.models.BreedNw
 import com.example.myapplication.domain.models.Breed
 
 fun BreedNw.toModel() = Breed(
-    description = this.description,
     id = this.id,
+    description = this.description,
     name = this.name,
     origin = this.origin,
     wikipediaUrl = this.wikipediaUrl
 )
 
 fun Breed.toDbModel() = BreedDb(
-    description = this.description,
     id = this.id,
+    description = this.description,
     name = this.name,
     origin = this.origin,
     wikipediaUrl = this.wikipediaUrl
 )
 
 fun BreedDb.toModel() = Breed(
-    description = this.description,
     id = this.id,
+    description = this.description,
     name = this.name,
     origin = this.origin,
     wikipediaUrl = this.wikipediaUrl

@@ -5,15 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class BreedDb(
-
-    var description: String,
-
     @PrimaryKey
     var id: String,
-
+    var description: String,
     var name: String,
-
     var origin: String,
-
     var wikipediaUrl: String?
 )

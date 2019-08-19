@@ -5,5 +5,4 @@ import io.reactivex.Single
 
 interface FavouritesRepository {
     fun loadFavourites(): Single<List<FavouriteCat>>
-    //fun saveFactToDb(cat: Cat)
 }

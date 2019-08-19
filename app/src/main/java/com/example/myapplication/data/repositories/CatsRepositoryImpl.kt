@@ -1,10 +1,8 @@
 package com.example.myapplication.data.repositories
 
-import com.example.myapplication.data.database.dao.BreedsDao
 import com.example.myapplication.data.mappers.toModel
 import com.example.myapplication.data.network.CatsApi
 import com.example.myapplication.data.network.models.AddCat
-import com.example.myapplication.data.network.models.Response
 import com.example.myapplication.domain.models.Cat
 import com.example.myapplication.domain.repositories.CatsRepository
 import io.reactivex.Single
@@ -17,7 +15,7 @@ class CatsRepositoryImpl(private val catsApi: CatsApi) :
             .map { it[0].toModel() }
     }
 
-    override fun addToFavourite(imageId: String): Single<Response> {
-        return catsApi.addCatToFavourites(AddCat(imageId, "123"))
+    override fun addToFavourite(imageId: String): Single<Any> {
+        return catsApi.addCatToFavourites(AddCat(imageId))
     }
 }
