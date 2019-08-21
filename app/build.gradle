@@ -50,8 +50,10 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:2.16"
 
     //rxjava2
-    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+   // implementation "io.reactivex.rxjava2:rxjava:2.2.9"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
+
 
     //glide
     implementation "com.github.bumptech.glide:glide:4.9.0"
@@ -71,10 +73,6 @@ dependencies {
     implementation "androidx.room:room-runtime:2.2.0-alpha02"
     implementation "androidx.room:room-rxjava2:2.2.0-alpha02"
     kapt "androidx.room:room-compiler:2.2.0-alpha02"
-
-    //butterknife
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
